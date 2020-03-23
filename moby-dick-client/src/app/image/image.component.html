@@ -1,0 +1,38 @@
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-md-9"><h2>Image List</h2></div>
+    
+  </div>
+  <table class="table">
+    <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Id</th>
+          <th scope="col">Tags</th>
+          <th scope="col">Created</th>
+          <th scope="col"></th>
+
+        </tr>
+    </thead>
+        <tr *ngFor="let image of images; let i=index;">
+          <th scope="row">{{i+1}}</th>
+          <td>{{image.id}}</td>
+          <td>{{image.tag}}</td>
+          <td>{{image.date}}</td>
+  
+          <td>
+            <button  title="stop container"
+            (click)="stop(image.tag)">Delete</button></td>
+          </tr>
+  </table>
+
+  <div class="row">
+  <label>New Image:
+    <input [(ngModel)]="imageData.uri" placeholder="Path to Docker file"/>
+    <input [(ngModel)]="imageData.tag" placeholder="Tag"/>
+  </label>
+   
+    <div class="col-md-3" (click)="add()"><button>Build New Image</button></div>
+  </div>
